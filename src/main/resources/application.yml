@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/semantic_analyze
+    username: postgres
+    password: 123
+  jpa:
+    hibernate:
+      ddl-auto: validate
+server:
+  port: 8888
