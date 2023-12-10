@@ -1,20 +1,18 @@
-package com.example.semanticanalyze.dto;
+package com.example.semanticanalyze.dto.auth;
 
+import static lombok.AccessLevel.PRIVATE;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-import static lombok.AccessLevel.PRIVATE;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-@Builder
 @FieldDefaults(level = PRIVATE)
-public class SemanticAnalyzeDtoRequest {
+public class LoginRequest {
 
-  String text;
+  String username;
+  String password;
 }

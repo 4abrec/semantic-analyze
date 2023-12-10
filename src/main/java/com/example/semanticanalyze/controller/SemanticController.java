@@ -21,14 +21,16 @@ import static lombok.AccessLevel.PRIVATE;
 @FieldDefaults(level = PRIVATE, makeFinal = true)
 public class SemanticController {
 
-    SemanticService semanticService;
+  SemanticService semanticService;
 
-    @GetMapping("/frequency")
-    public ResponseEntity<List<SemanticFrequencyAnalysisResponse>> getWordFrequency(@RequestBody SemanticAnalyzeDtoRequest request) {
-        var wordFrequencyList = semanticService.frequencySemanticAnalyze(request.getText()).entrySet().stream()
-                .map(elem -> new SemanticFrequencyAnalysisResponse(elem.getKey(), elem.getValue()))
-                .toList();
-        return ResponseEntity.ok(wordFrequencyList);
-    }
+  @GetMapping("/frequency")
+  public ResponseEntity<List<SemanticFrequencyAnalysisResponse>> getWordFrequency(
+      @RequestBody SemanticAnalyzeDtoRequest request) {
+    var wordFrequencyList = semanticService.frequencySemanticAnalyze(request.getText()).entrySet()
+        .stream()
+        .map(elem -> new SemanticFrequencyAnalysisResponse(elem.getKey(), elem.getValue()))
+        .toList();
+    return ResponseEntity.ok(wordFrequencyList);
+  }
 
 }
