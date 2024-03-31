@@ -1,5 +1,6 @@
 package com.example.semanticanalyze.dto;
 
+import java.util.Map;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,6 +16,6 @@ import static lombok.AccessLevel.PRIVATE;
 @FieldDefaults(level = PRIVATE)
 public class SemanticFrequencyAnalysisResponse {
 
-  String word;
-  Integer count;
+  Long durationInMs;
+  Map<String, Integer> result;
 }

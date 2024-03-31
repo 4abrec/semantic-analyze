@@ -2,6 +2,7 @@ package com.example.semanticanalyze.controller;
 
 import com.example.semanticanalyze.dto.SemanticAnalyzeDtoRequest;
 import com.example.semanticanalyze.dto.SemanticFrequencyAnalysisResponse;
+import com.example.semanticanalyze.dto.SemanticFrequencyLDAResponse;
 import com.example.semanticanalyze.service.SemanticService;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -24,13 +25,14 @@ public class SemanticController {
   SemanticService semanticService;
 
   @GetMapping("/frequency")
-  public ResponseEntity<List<SemanticFrequencyAnalysisResponse>> getWordFrequency(
+  public ResponseEntity<SemanticFrequencyAnalysisResponse> getWordFrequency(
       @RequestBody SemanticAnalyzeDtoRequest request) {
-    var wordFrequencyList = semanticService.frequencySemanticAnalyze(request.getText()).entrySet()
-        .stream()
-        .map(elem -> new SemanticFrequencyAnalysisResponse(elem.getKey(), elem.getValue()))
-        .toList();
-    return ResponseEntity.ok(wordFrequencyList);
+    return ResponseEntity.ok(semanticService.frequencySemanticAnalyze(request.getText()));
+  }
+
+  @GetMapping("/frequencyLDA")
+  public ResponseEntity<SemanticFrequencyLDAResponse> getWordFrequency(@RequestBody List<String> request) {
+    return ResponseEntity.ok(semanticService.LDASemanticAnalyze(request)  );
   }
 
 }
